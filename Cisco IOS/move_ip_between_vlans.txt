@@ -1,5 +1,5 @@
 # Macro by Brett Verney (@wifiwizardofoz)
-# Version: v0.1 | 1-10-2020
+# Version: v0.2 | 7-10-2020
 # Used for: Moving an IP address between VLANs without being disconnected from a session before configuration is complete
 
 # Placeholders (find and replace)
@@ -10,15 +10,15 @@
 conf t
 !
 macro name ipmove
- no interface {OLD_MGMT_VLAN}
- interface {NEW_MGMT_VLAN}
+ no interface Vlan{OLD_MGMT_VLAN}
+ interface Vlan{NEW_MGMT_VLAN}
  ip address 10.0.20.1 255.255.255.0
- snmp-server trap-source {NEW_MGMT_VLAN}
- ntp source {NEW_MGMT_VLAN}
- ip tacacs source-interface {NEW_MGMT_VLAN}
+ snmp-server trap-source Vlan{NEW_MGMT_VLAN}
+ ntp source Vlan{NEW_MGMT_VLAN}
+ ip tacacs source-interface Vlan{NEW_MGMT_VLAN}
  @
 !
 
 # Execute macro
-macro global apply vlmove
+macro global apply ipmove
 !
