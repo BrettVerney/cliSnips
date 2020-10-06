@@ -1,0 +1,123 @@
+# CLI Snippet by Brett Verney (@wifiwizardofoz)
+# Version: v0.1 | 7-10-2020
+# Used for: Connecting two Nexus switches in a single vPC domain
+
+
+## SWITCH No.1 ##
+
+# Enable required features
+feature lacp
+feature vpc
+!
+# Create VLANs
+vlan 23
+ name vpc_keepalive
+vlan 666
+ name blackhole
+!
+# Create vPC Keepalive VRF
+vrf context vpc_keepalive
+!
+# Create non-routable SVI
+Interface Vlan1000
+ description vpc_keepalive_ip
+ vrf member keepalive
+ ip address 198.51.100.1/30
+!
+# Create vPC Domain
+vpc domain 1
+ role priority 10
+ peer-keepalive destination 198.51.100.2 source 198.51.100.1 vpc_keepalive
+ peer-switch
+ delay restore 360
+ auto-recovery
+ graceful consistency-check
+ peer-gateway # Optional - used for L3 switch
+ ip arp synchronize # Optional - used for L3 switch
+!
+# Assign interface to vPC peer VLAN
+Interface Ethernet1/48
+ description vpc_keepalive_link
+ switchport access vlan 1000
+!
+# Assign interface to vPC peer Port-Channel
+Interface Ethernet1/1
+ description vpc_peer_links
+ channel-group 1000 mode active
+!
+# Create vPC peer Port-Channel 
+Interface Port-Channel1000
+ description vpc_peer_links
+ switchport mode trunk
+ switchport trunk native vlan 666
+ switchport trunk allowed vlan x,y,z
+ spanning-tree port type network
+ vpc peer-link
+! 
+# Configure vPC interfaces
+interface Ethernet1/30-31
+ channel-group 30 mode active
+!
+# Assign vPC to Port-Channel & vPC
+Interface Port-Channel30
+ vPC 30
+!
+## SWITCH No.2 ##
+ 
+# Enable required features
+feature lacp
+feature vpc
+!
+# Create VLANs
+vlan 23
+ name vpc_keepalive
+vlan 666
+ name blackhole
+!
+# Create vPC Keepalive VRF
+vrf context vpc_keepalive
+!
+# Create non-routable SVI
+Interface Vlan1000
+ description vpc_keepalive_ip
+ vrf member keepalive
+ ip address 198.51.100.2/30
+! 
+# Create vPC Domain
+vpc domain 1
+ role priority 20
+ peer-keepalive destination 198.51.100.1 source 198.51.100.2 vpc_keepalive
+ peer-switch
+ delay restore 360
+ auto-recovery
+ graceful consistency-check
+ peer-gateway # Optional - used for L3 switch
+ ip arp synchronize # Optional - used for L3 switch
+!
+# Assign interface to vPC peer VLAN
+Interface Ethernet1/48
+ description vpc_keepalive_link
+ switchport access vlan 1000
+!
+# Assign interface to vPC peer Port-Channel
+Interface Ethernet1/1
+ description vpc_peer_links
+ channel-group 1000 mode active
+!
+# Create vPC peer Port-Channel 
+Interface Port-Channel1000
+ description vpc_peer_links
+ switchport mode trunk
+ switchport trunk native vlan 666
+ switchport trunk allowed vlan x,y,z
+ spanning-tree port type network
+ vpc peer-link
+! 
+# Configure vPC interfaces
+interface Ethernet1/30-31
+ channel-group 30 mode active
+!
+# Assign vPC to Port-Channel & vPC
+Interface Port-Channel30
+ vPC 30  
+!
