@@ -118,11 +118,11 @@ Interface Port-Channel1000
  spanning-tree port type network
  vpc peer-link
 ! 
-# Configure vPC interfaces
+# Configure vPC interfaces (to dual-homed servers, switches, routers etc)
 interface Ethernet1/30-31
  channel-group 30 mode active
 !
-# Assign vPC to Port-Channel & vPC
+# Assign vPC to Port-Channel & vPC (to dual-homed servers, switches, routers etc)
 Interface Port-Channel30
  vPC 30  
 !
