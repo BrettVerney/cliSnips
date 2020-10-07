@@ -27,13 +27,15 @@ Interface Vlan1000
 # Create vPC Domain
 vpc domain 1
  role priority 10
+ system-priority 30000
  peer-keepalive destination 198.51.100.2 source 198.51.100.1 vpc_keepalive
  peer-switch
- delay restore 360
- auto-recovery
- graceful consistency-check
  peer-gateway # Optional - used for L3 switch
  ip arp synchronize # Optional - used for L3 switch
+ delay restore 150
+ auto-recovery
+ graceful consistency-check
+
 !
 # Assign interface to vPC peer VLAN
 Interface Ethernet1/48
@@ -86,9 +88,12 @@ Interface Vlan1000
 # Create vPC Domain
 vpc domain 1
  role priority 20
+ system-priority 30000
  peer-keepalive destination 198.51.100.1 source 198.51.100.2 vpc_keepalive
  peer-switch
- delay restore 360
+ peer-gateway # Optional - used for L3 switch
+ ip arp synchronize # Optional - used for L3 switch
+ delay restore 150
  auto-recovery
  graceful consistency-check
  peer-gateway # Optional - used for L3 switch
