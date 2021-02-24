@@ -1,0 +1,46 @@
+# CLI Snippet by Brett Verney (@wifiwizardofoz)
+# Version: v0.1 | 24-02-2021
+# Used for: General security hardening on Cisco IOS
+
+hostname {HOSTNAME}
+ip domain-name {DOMAIN_NAME}
+crypto key generate rsa general-keys modulus 2048
+!
+no service pad
+service tcp-keepalives-in
+service tcp-keepalives-out
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+no ip source-route
+!
+login on-failure log
+!
+udld enable
+!
+authentication mac-move permit
+!
+memory reserve critical 2048
+!
+#lldp run #uncomment if required
+#cdp run #uncomment if required
+!
+no ip http server
+no ip http secure-server
+ip ssh time-out 30
+ip ssh authentication-retries 2
+ip ssh logging events
+ip ssh version 2
+login on-failure log
+login on-success log
+!
+line vty 0 4
+ exec-timeout 5 0
+ transport input ssh
+ transport output none
+line vty 5 15
+ exec-timeout 5 0
+ transport input ssh
+ transport output none
+!
