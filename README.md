@@ -5,7 +5,9 @@ A handy collection of config snippets for CLI based appliances.
 ```
 .
 ├── Cisco IOS
-│   └── move_ip_between_vlans.txt
+│   ├── logging.txt
+│   ├── move_ip_between_vlans.txt
+│   └── vtp.txt
 └── Cisco NX-OS
     └── vpc_domain.txt
 ```
