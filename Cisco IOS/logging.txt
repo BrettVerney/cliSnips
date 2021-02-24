@@ -1,0 +1,39 @@
+# CLI Snippet by Brett Verney (@wifiwizardofoz)
+# Version: v0.1 | 24-02-2021
+# Used for: Basic logging configuration for Cisco IOS
+
+# Placeholders (find and replace)
+# {MGMT_INTERFACE}
+# {LOGGING_SERVER_1}
+# {LOGGING_SERVER_2}
+
+no logging console
+no logging monitor
+logging buffered 65536
+logging source-interface {MGMT_INTERFACE}
+service timestamps log datetime msec localtime
+logging trap notifications
+logging host {LOGGING_SERVER_1}
+logging host {LOGGING_SERVER_2}
+
+# Log to a UNIX Syslog Daemon (Optional)
+logging facility {FACILITY_TYPE)
+
+# UNIX DAEMON FACILITY TYPES #
+auth		Authorization system
+cron		Cron facility
+daemon		System daemon
+kern		Kernel
+local0-7	Locally Defined Messages
+lpr			Line Printer System
+mail		Mail System
+news		USENET news
+sys9		System Use
+sys10		System Use
+sys11		System Use
+sys12		System Use
+sys13		System Use
+sys14		System Use
+syslog		System log
+user		User process
+uucp		UNIX-to-UNIX copy system

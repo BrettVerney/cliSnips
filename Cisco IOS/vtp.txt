@@ -1,0 +1,58 @@
+# CLI Snippet by Brett Verney (@wifiwizardofoz)
+# Version: v0.1 | 7-10-2020
+# Used for: Safe configuration for VLAN Trunking Protocol (VTP) on Cisco IOS
+
+## VTP SERVER ###
+
+# Initial VTP Configuration
+vtp mode transparent ! Important - wipes VTP revision number
+vtp domain {DOMAIN_NAME}
+vtp password {VTP_PASSWORD}
+vtp version 3
+!
+# Configure All required VLANs within network (example)
+vlan 10
+ name staff
+vlan 20
+ students
+vlan 30
+ guests
+vlan 666
+ blackhole
+vlan 100
+ management
+!
+# Change switch to VTP Server
+vtp mode server
+vtp pruning
+do vtp primary
+!
+
+### VTP CLIENT ###
+
+# Initial VTP Configuration
+vtp mode transparent # Important - wipes VTP revision number
+vtp domain {DOMAIN_NAME}
+vtp password {VTP_PASSWORD}
+vtp version 3
+!
+# Create base VLANs (example)
+vlan 666
+ blackhole
+vlan 100
+ management
+!
+# Confirm connectivity via SSH
+!
+# Change switch to VTP Client
+vtp mode client
+!
+
+## VERIFICATION AND TROUBLESHOOTING ##
+show vtp status
+show vtp status | include Primary
+show vtp devices
+show vtp password
+show vtp counters
+show vlan brief
+show interface trunk
