@@ -2,7 +2,7 @@
 # Version: v0.1 | 7-10-2020
 # Used for: Safe configuration for VLAN Trunking Protocol (VTP) on Cisco IOS
 
-## VTP SERVER ###
+## VTP SERVER ##
 
 # Initial VTP Configuration
 vtp mode transparent ! Important - wipes VTP revision number
@@ -30,7 +30,7 @@ vtp pruning
 do vtp primary
 !
 
-### VTP CLIENT ###
+## VTP CLIENT ##
 
 # Initial VTP Configuration
 vtp mode transparent # Important - wipes VTP revision number
