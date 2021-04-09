@@ -21,7 +21,7 @@ Shows all layer 3 capable interfaces on the device.<br><br>
 	Shows the status of all port 24s in slots 1, 2, and 7 in a multi chassis or stack setup<br><br>
 
 ```sh int status | i Gi3/0/(15|2[0-4])```<br>
-	Shows the status of ports 15 through 24 in switch 3 .<br><br>
+	Shows the status of ports 15 though 24 in switch 3 .<br><br>
 
 ```sh int status | i _15_```<br>
 	Shows all of the interfaces assigned to VLAN 15<br><br>
@@ -43,5 +43,3 @@ Shows all layer 3 capable interfaces on the device.<br><br>
 	
 ```sh lldp ne de | i is id|al In|em na|IP:|em De|rt De```<br>
 	Summarise the lldp neighbor detail output<br><br>
-
-
