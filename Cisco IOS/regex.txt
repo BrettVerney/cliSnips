@@ -1,0 +1,45 @@
+CLI Snippet by Brett Verney (@wifiwizardofoz)
+Version: v0.1 | 9-04-2021
+Used for: Common Regex patterns for searching and filtering Cisco IOS CLI output
+
+sh run | i ^interface|^_ip address
+	# Shows all interfaces and their IP address information in an IOS style CLI format
+
+sh ip int brief | e unassigned
+	# Shows all layer 3 capable interfaces on the device.
+	
+sh ip int brief | exclude ^G
+	# Show all interfaces that don't start with G (GigabitEthernet for example)
+	
+sh ip int brief | include ^(G|I)
+	# Shows all interfaces that start with a G or I (# Show the Interface heading, and only include Gigabit Interfaces)
+
+sh int status | i Gi[1-8]/0/24
+	# Shows the status of all port 24s on switches 1 through 8 in a multi chassis or stack setup
+
+sh int status | i Gi[127]/24
+	# Shows the status of all port 24s in slots 1, 2, and 7 in a multi chassis or stack setup
+
+sh int status | i Gi3/0/(15|2[0-4])
+	# Shows the status of ports 15 though 24 in switch 3 .
+
+sh int status | i _15_
+	# Shows all of the interfaces assigned to VLAN 15
+	
+sh int | include ^[A-Z]|Last in
+	Best way to # Show the last time a frame entered an interface
+
+sh int status | i (a-half___a-10|a-half_____10|half_____10|a-full___a-10|full_____10|auto_____10|half_____100|a-half_____100)
+	# Shows all interfaces currently operating at 10Mbps and/or Half-Duplex
+
+sh int status | inc (.*not.*154.*)
+	# Shows interfaces not connected and assigned to VLAN 154
+	
+sh int count err | e 0___________0___________0___________0__________0____________0|0__________0__________0___________0__________0__________0__________0
+	# Show all interfaces that have had errors since the last reboot or interface counter reset
+
+sh cdp ne de | i -|e ID|Interface:|IP add|Plat
+	# Summarise the cdp neighbor detail output
+	
+sh lldp ne de | i is id|al In|em na|IP:|em De|rt De
+	# Summarise the lldp neighbor detail output
