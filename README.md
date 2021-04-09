@@ -9,6 +9,7 @@ A handy collection of config snippets for CLI based appliances.
 │   ├── logging.txt
 │   ├── move_ip_between_vlans.txt
 │   ├── spanning-tree_rpvst.txt
+|   ├── regex.txt
 │   └── vtp.txt
 └── Cisco NX-OS
     └── vpc_domain.txt
