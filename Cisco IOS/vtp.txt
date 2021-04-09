@@ -1,5 +1,6 @@
 CLI Snippet by Brett Verney (@wifiwizardofoz)
-Version: v0.1 | 7-10-2020*Used for: Safe configuration for VLAN Trunking Protocol (VTP) on Cisco IOS
+Version: v0.1 | 7-10-2020
+Used for: Safe configuration for VLAN Trunking Protocol (VTP) on Cisco IOS
 
 ## VTP SERVER ##
 
