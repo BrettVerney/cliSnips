@@ -1,6 +1,6 @@
-CLI Snippet by Brett Verney (@wifiwizardofoz)
-Version: v0.1 | 9-04-2021
-Used for: Common Regex patterns for searching and filtering Cisco IOS CLI output
+CLI Snippet by Brett Verney (@wifiwizardofoz)<br>
+Version: v0.1 | 9-04-2021<br>
+Used for: Common Regex patterns for searching and filtering Cisco IOS CLI output<br><br>
 
 ```show run | i ^interface|^_ip address```<br>
 Shows all interfaces and their IP address information in an IOS style CLI formatReturns lines that being with 'interface' or  'ip address', essentially giving you all of your interface IP’s in an IOS-pastable format.<br><br>
