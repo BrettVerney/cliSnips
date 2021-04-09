@@ -38,7 +38,7 @@ Shows all layer 3 capable interfaces on the device.<br><br>
 ```sh int count err | e 0___________0___________0___________0__________0____________0|0__________0__________0___________0__________0__________0__________0```<br>
 	Show all interfaces that have had errors since the last reboot or interface counter reset<br>
 
-```show cdp ne de | i -|e ID|Interface:|IP add|Plat```<br><br>
+```show cdp ne de | i -|e ID|Interface:|IP add|Plat```<br>
 	Summarise the cdp neighbor detail output<br>
 	
 ```show lldp ne de | i is id|al In|em na|IP:|em De|rt De```<br>
