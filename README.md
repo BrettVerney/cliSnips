@@ -5,12 +5,12 @@ A handy collection of config snippets for CLI based appliances.
 ```
 .
 ├── Cisco IOS
-│   ├── general_security
-│   ├── logging
-│   ├── move_ip_between_vlans
-│   ├── spanning-tree_rpvst
-|   ├── regex
-│   └── vtp
+│   ├── general_security.txt
+│   ├── logging.txt
+│   ├── move_ip_between_vlans.txt
+│   ├── spanning-tree_rpvst.txt
+│   ├── stackwise_virtual.txt
+│   └── vtp.txt
 └── Cisco NX-OS
-    └── vpc_domain
+    └── vpc_domain.txt
 ```
