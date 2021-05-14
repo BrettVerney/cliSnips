@@ -1,0 +1,47 @@
+# CLI Snippet by Brett Verney (@wifiwizardofoz)
+# Version: v0.1 | 14/05/2021
+# Used for: Cisco IOS-XE VPC Configuration
+# Tested: Cisco 9500
+
+## Configure the following Stackwise-Virtual config on each switch
+
+stackwise-virtual
+ domain 100
+!
+interface range hundredGigE1/0/25 - 26
+ stackwise-virtual link 1
+!
+!
+interface TwentyFiveGigE 1/0/24
+ stackwise-virtual dual-active-detection
+!
+
+## Connect switches together using the ports above
+## Save config on chassis #1 and reload
+## Save config on chassis #2 and reload
+
+## When switches have reboot and formed stack - change chassis priorities with configuration below
+
+switch 1 priority 15
+switch 2 priority 14
+!
+
+## Verification & Troubleshooting
+
+show redundancy
+show switch
+show interfaces status
+
+## Reloading Stackwise Members
+
+# Reloading the StackWise Virtual domain
+
+reload
+
+# Reload the active unit and force a switchover to standby
+
+redundancy force-switchover
+
+# Reload the standby virtual switch
+
+redundancy reload peer
