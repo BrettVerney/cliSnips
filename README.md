@@ -4,6 +4,8 @@ A handy collection of config snippets for CLI based appliances.
 ## Snippets Available
 ```
 .
+├── Cisco ISE
+│   └── shutdown_appliance.txt
 ├── Cisco IOS
 │   ├── general_security.txt
 │   ├── logging.txt
