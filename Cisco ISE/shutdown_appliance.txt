@@ -1,0 +1,19 @@
+# CLI Snippet by Brett Verney (@wifiwizardofoz)
+# Version: v0.1 | 16-06-2021
+# Used for: Gracefully shutdown Cisco ISE appliance
+
+# Stop applications
+
+application stop ise
+
+# Verify status of applications, wait until stopped
+
+show application status ise
+
+# After stopping services, issue Ctrl+C to get back to the ISE prompt
+
+# Shutdown appliance
+
+halt
+
+# Follow prompts and save configuration if required
