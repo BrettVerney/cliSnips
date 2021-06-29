@@ -1,0 +1,17 @@
+# CLI Snippet by Brett Verney (@wifiwizardofoz)
+# Version: v0.1 | 29-06-2021
+# Used for: Gracefully shutdown Cisco Prime appliance
+
+# Stop applications
+
+application stop NCS
+
+# Verify status of applications, wait until stopped
+
+show application status NCS
+
+# Shutdown appliance
+
+halt
+
+# Follow prompts and save configuration if required
