@@ -15,6 +15,8 @@ A handy collection of config snippets for CLI based appliances.
 │   ├── spanning-tree_rpvst.txt
 │   ├── stackwise_virtual.txt
 │   └── vtp.txt
-└── Cisco NX-OS
-    └── vpc_domain.txt
+├── Cisco NX-OS
+│   └── vpc_domain.txt
+└── Windows PowerShell
+    └── checksum_verification.txt
 ```
