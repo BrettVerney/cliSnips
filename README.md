@@ -11,7 +11,6 @@ A handy collection of config snippets for CLI based appliances.
 ├── Cisco IOS
 │   ├── general_security.txt
 │   ├── logging.txt
-│   ├── move_ip_between_vlans.txt
 │   ├── spanning-tree_rpvst.txt
 │   ├── stackwise_virtual.txt
 │   └── vtp.txt
