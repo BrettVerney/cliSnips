@@ -73,6 +73,8 @@ copy run start
 conf t
 software auto-upgrade enable
 
+copy run start
+
 
 
 # Verifiation Commands
