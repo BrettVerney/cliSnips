@@ -62,8 +62,9 @@ verify /md5 flash:{IOS_image}.bin {MD5_checksum}
 
 conf t
 no boot system
-Device(config)# boot system switch all flash:{IOS_image}.bin
-Device(config)# do write memory
+boot system switch all flash:{IOS_image}.bin
+
+copy run start
 
 
 
