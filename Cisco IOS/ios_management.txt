@@ -1,0 +1,82 @@
+# CLI Snippet by Brett Verney (@wifiwizardofoz)
+# Version: v0.1 | 13-07-2021
+# Used for: Managing IOS & IOS-XE images
+
+# Placeholders (find and replace)
+# {IOS_image}
+# {MD5_checksum}
+
+
+
+# Bundle Mode
+
+copy usbflash0:{IOS_image}.bin flash:{IOS_image}.bin
+
+verify /md5 flash:{IOS_image}.bin {MD5_checksum}
+
+conf t
+boot system flash:{IOS_image}.bin
+exit
+
+copy run start
+reload
+
+
+
+# Install Mode
+
+install remove inactive
+
+copy usbflash0:{IOS_image}.bin flash:{IOS_image}.bin
+
+conf t
+boot system flash:packages.conf
+exit
+
+copy run start
+
+verify /md5 flash:{IOS_image}.bin {MD5_checksum} 
+
+install add file flash:{IOS_image}.bin activate commit
+
+
+
+# Convert from Bundle mode to Install Mode
+
+conf t
+request platform software package expand file flash:{IOS_image}.bin to flash:
+no boot system
+boot system switch all flash:packages.conf
+exit
+
+copy run start
+
+
+
+
+# Convert from Install Mode to Bundle Mode
+
+copy usbflash0:{IOS_image}.bin flash:{IOS_image}.bin
+
+verify /md5 flash:{IOS_image}.bin {MD5_checksum}
+
+conf t
+no boot system
+Device(config)# boot system switch all flash:{IOS_image}.bin
+Device(config)# do write memory
+
+
+
+# Auto-upgrading a new switch in a stack
+
+conf t
+software auto-upgrade enable
+
+
+
+# Verifiation Commands
+
+show version
+show boot
+
+

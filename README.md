@@ -10,6 +10,7 @@ A handy collection of config snippets for CLI based appliances.
 │   └── shutdown_appliance.txt
 ├── Cisco IOS
 │   ├── general_security.txt
+│   ├── ios_management
 │   ├── logging.txt
 │   ├── spanning-tree_rpvst.txt
 │   ├── stackwise_virtual.txt
@@ -17,5 +18,5 @@ A handy collection of config snippets for CLI based appliances.
 ├── Cisco NX-OS
 │   └── vpc_domain.txt
 └── Windows PowerShell
-    └── checksum_verification.txt
+    └── file_checksum_verification.txt
 ```
