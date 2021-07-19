@@ -29,13 +29,13 @@ install remove inactive
 
 copy usbflash0:{IOS_image}.bin flash:{IOS_image}.bin
 
+verify /md5 flash:{IOS_image}.bin {MD5_checksum} 
+
 conf t
 boot system switch all flash:packages.conf
 exit
 
 copy run start
-
-verify /md5 flash:{IOS_image}.bin {MD5_checksum} 
 
 install add file flash:{IOS_image}.bin activate commit
 
