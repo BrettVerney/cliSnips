@@ -30,7 +30,7 @@ install remove inactive
 copy usbflash0:{IOS_image}.bin flash:{IOS_image}.bin
 
 conf t
-boot system flash:packages.conf
+boot system switch all flash:packages.conf
 exit
 
 copy run start
