@@ -1,0 +1,74 @@
+# CLI Snippet by Brett Verney (@wifiwizardofoz)
+# Version: v0.1 | 12-08-2021
+# Used for: TACACS+ management of Cisco IOS-XE devices
+
+# Placeholders (find and replace)
+# {TACACS_SERVER_GROUP_NAME}
+# {TACACS_SERVER_NAME_1}
+# {TACACS_SERVER_IP_1}
+# {TACACS_SERVER_NAME_2}
+# {TACACS_SERVER_IP_2}
+# {TACACS_PRE_SHARED_KEY}
+# {MGMT_INTERFACE}
+
+aaa new-model
+!
+!
+tacacs server {TACACS_SERVER_NAME_1}
+ address ipv4 {TACACS_SERVER_IP_1}
+ key 7 {TACACS_PRE_SHARED_KEY}
+!
+tacacs server {TACACS_SERVER_NAME_2}
+ address ipv4 {TACACS_SERVER_IP_2}
+ key 7 {TACACS_PRE_SHARED_KEY}
+!
+aaa group server tacacs+ {TACACS_SERVER_GROUP_NAME}
+ server name {TACACS_SERVER_NAME_1}
+ server name {TACACS_SERVER_NAME_2}
+ ip tacacs source-interface {MGMT_INTERFACE}
+!
+aaa authentication fail-message ^
+
+ ************************************************************************
+ *                                                                      *
+ *                xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx               *
+ *    xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx   *
+ *                                                                      *
+ ************************************************************************
+ 
+^
+aaa authentication login default group {tacacs_server_group_name} local
+aaa authentication enable default group {tacacs_server_group_name} enable
+aaa authorization console
+aaa authorization exec default group {tacacs_server_group_name} local if-authenticated
+aaa authorization commands 0 default group {tacacs_server_group_name} none
+aaa authorization commands 1 default group {tacacs_server_group_name} local if-authenticated
+aaa authorization commands 15 default group {tacacs_server_group_name} local if-authenticated
+aaa accounting exec default start-stop group tacacs+
+aaa accounting commands 1 default start-stop group {tacacs_server_group_name}
+aaa accounting commands 15 default start-stop group {tacacs_server_group_name}
+aaa accounting connection default start-stop group {tacacs_server_group_name}
+aaa accounting system default start-stop group {tacacs_server_group_name}
+!
+banner motd ^
+
+ ****************************** WARNING *********************************
+ *                                                                      *
+ *         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx          *
+ *                                                                      *
+ * xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx *
+ * xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx *
+ *        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx         *
+ *                                                                      *
+ *           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx           *
+ *                                                                      *
+ *   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  *
+ *                                                                      *
+ ************************************************************************
+ 
+^
+!
+
+
+
+

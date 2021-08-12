@@ -1,6 +1,6 @@
 # CLI Snippet by Brett Verney (@wifiwizardofoz)
-# Version: v0.1 | 14/05/2021
-# Used for: Cisco IOS-XE VPC Configuration
+# Version: v0.1 | 14-05-2021
+# Used for: Cisco IOS-XE VSS Configuration
 # Tested: Cisco 9500
 
 ## Configure the following Stackwise-Virtual config on each switch
