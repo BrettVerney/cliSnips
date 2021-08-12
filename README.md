@@ -10,10 +10,11 @@ A handy collection of config snippets for CLI based appliances.
 │   └── shutdown_appliance.txt
 ├── Cisco IOS
 │   ├── general_security.txt
-│   ├── ios_management
+│   ├── ios_management.txt
 │   ├── logging.txt
 │   ├── spanning-tree_rpvst.txt
 │   ├── stackwise_virtual.txt
+│   ├── tacacs_mgmt.txt
 │   └── vtp.txt
 ├── Cisco NX-OS
 │   └── vpc_domain.txt
