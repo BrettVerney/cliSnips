@@ -1,0 +1,31 @@
+# CLI Snippet by Brett Verney (@wifiwizardofoz)
+# Version: v0.1 | 21-04-2022
+# Used for: Configure interface IP settings on Aruba ALE VM
+
+# Check for interface name (typically "System eth0" for ALE)
+
+nmcli connection
+
+# Modify interface IP address
+
+nmcli connection modify "System eth0" ipv4.address  <ip/prefix>
+
+# Set default gateway
+
+nmcli connection modify "System eth0" ipv4.gateway <gateway_ip_address>
+
+# Set DNS Server
+
+nmcli connection modify ipv4.dns <dns_ip_adress>
+
+# Save changes and reload the interface
+
+nmcli connection up "System eth0"
+
+# Set DNS Search Domains
+
+nmcli connection modify "System eth0" ipv4.dns-search "domain_name"
+
+# Restart NetworkManager service
+
+systemctl restart NetworkManager
