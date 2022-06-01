@@ -6,6 +6,10 @@ A handy collection of config snippets for CLI based appliances.
 .
 ├── Aruba ALE
 │   └── interface_configure.txt
+├── Aruba AOS-CX
+│   ├── spanning-tree_RPVST.txt
+│   ├── tacacs_mgmt.txt
+│   └── vsf_stacking.txt
 ├── Cisco IOS
 │   ├── general_security.txt
 │   ├── ios_management.txt
