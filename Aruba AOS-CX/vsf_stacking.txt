@@ -1,0 +1,57 @@
+# CLI Snippet by Brett Verney (@wifiwizardofoz)
+# Version: v0.1 | 1-06-2022
+# Used for: Aruba AOS-CX VSF Stack Configuration
+# Tested: Aruba 6300M
+
+## Connect DAC cables
+
+# 2 MEMBER #	# 3+ MEMBER #
+   49  50			49  50__
+   |	|			|	    |
+   50  49			50	49  |   
+						|   |
+					49	50  |
+					|_______|
+						
+## Configure the following VSF config on 1st switch member in stack
+
+vsf member 1
+ type <switch_model>
+ link 1 1/1/50
+ link 2 1/1/49
+!
+vsf secondary-member 2
+!
+
+## Configure the following VSF config on 1st switch member in stack
+
+vsf member 2
+ type <switch_model>
+link 1 1/1/49
+link 2 1/1/50
+vsf renumber-to 2
+!
+
+## Configure the following VSF config on any additional switch members in stack
+
+vsf member <x>
+ type <switch_model>
+link 1 1/1/49
+link 2 1/1/50
+vsf renumber-to <x>
+!
+
+## Optionally - interconnect MGMT interfaces and configure vsf split-detect
+
+vsf split-detect mgmt-interface
+
+## When switches have reboot - verify that VSF stack has been formed ##
+
+show vsf
+show vsf link
+show vsg topology
+show interface brief
+
+## Reloading specific stack members
+
+vsf member <x> reboot

@@ -1,0 +1,51 @@
+# CLI Snippet by Brett Verney (@wifiwizardofoz)
+# Version: v0.1 | 1/06/2022
+# Used for: Rapid Per-VLAN Spanning-Tree Configuration
+
+## Core Switch ##
+
+vlan {vlan_id}
+ name {vlan_name}
+!
+spanning-tree
+spanning-tree mode RPVST
+spanning-tree vlan {range}
+spanning-tree vlan {range} priority 4096
+loop-protect transmit-interval 1
+loop-protect re-enable-timer 30
+
+spanning-tree mode rapid-pvst
+spanning-tree loopguard default
+spanning-tree extend system-id
+spanning-tree etherchannel guard misconfig
+udld aggressive
+spanning-tree vlan 1-4094 priority 4096
+!
+
+## Access Switch ##
+
+vlan {vlan_id}
+ name {vlan_name}
+!
+spanning-tree
+spanning-tree mode RPVST
+spanning-tree vlan {range}
+loop-protect transmit-interval 1
+loop-protect re-enable-timer 30
+!
+
+# Edge Ports
+
+interface {interface_id}
+ spanning-tree bpdu-guard
+ loop-protect
+ spanning-tree tcn-guard
+ spanning-tree port-type admin-edge
+!
+
+## Verification & Troubleshooting ##
+
+show spanning-tree
+show spanning-tree vlan {vlan_id}
+show spanning-tree summary port
+show spanning-tree summary root

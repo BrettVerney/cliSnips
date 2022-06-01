@@ -1,0 +1,45 @@
+# CLI Snippet by Brett Verney (@wifiwizardofoz)
+# Version: v0.1 | 1-06-2022
+# Used for: TACACS+ management of Aruba-AOS-CX devices
+
+# Placeholders (find and replace)
+# {TACACS_SERVER_NAME_1}
+# {TACACS_SERVER_IP_1}
+# {TACACS_SERVER_NAME_2}
+# {TACACS_SERVER_IP_2}
+# {TACACS_PRE_SHARED_KEY}
+# {MGMT_INTERFACE}
+
+
+tacacs-server host {TACACS_SERVER_IP_1} key Plaintext {TACACS_PRE_SHARED_KEY}
+tacacs-server host {TACACS_SERVER_IP_2} key Plaintext {TACACS_PRE_SHARED_KEY}
+!
+aaa group server tacacs {TACACS_SERVER_GROUP_NAME}
+ {TACACS_SERVER_IP_1}
+ {TACACS_SERVER_IP_2}
+!
+ip source-interface tacacs {MGMT_INTERFACE}
+!
+aaa authentication login ssh group {TACACS_SERVER_GROUP_NAME} local
+aaa authentication login console group {TACACS_SERVER_GROUP_NAME} local
+aaa accounting all default start-stop group {TACACS_SERVER_GROUP_NAME} local
+# aaa authorization commands default group {TACACS_SERVER_GROUP_NAME} local      # Optional
+
+
+banner motd ^
+
+ ****************************** WARNING *********************************
+ *                                                                      *
+ *         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx          *
+ *                                                                      *
+ * xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx *
+ * xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx *
+ *        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx         *
+ *                                                                      *
+ *           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx           *
+ *                                                                      *
+ *   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  *
+ *                                                                      *
+ ************************************************************************
+^
+!
