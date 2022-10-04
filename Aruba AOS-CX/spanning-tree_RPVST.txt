@@ -1,5 +1,5 @@
 # CLI Snippet by Brett Verney (@wifiwizardofoz)
-# Version: v0.1 | 1/06/2022
+# Version: v0.1 | 1-06-2022
 # Used for: Rapid Per-VLAN Spanning-Tree Configuration
 
 ## Core Switch ##
