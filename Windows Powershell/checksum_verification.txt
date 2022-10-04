@@ -1,5 +1,5 @@
 # CLI Snippet by Brett Verney (@wifiwizardofoz)
-# Version: v0.1 | 13-07-2021
+# Version: v0.2 | 9-06-2022
 # Used for: Compute checksum of a file to verify its integirty
 
 # Syntax
@@ -8,9 +8,9 @@ Get-FileHash [-LiteralPath & File | File] [-Algorithm {SHA1 | SHA256 | SHA384 | 
 
 # Method 1 - specify full path & file
 
-Get-FileHash testfile.txt -Algorithm MD5
+Get-FileHash  C:\Temp\testfile.txt -Algorithm MD5
 
 # Method 2 - browse to folder & specify file
 
 cd C:\Temp
-Get-FileHash  C:\Temp\testfile.txt -Algorithm MD5
+Get-FileHash testfile.txt -Algorithm MD5
