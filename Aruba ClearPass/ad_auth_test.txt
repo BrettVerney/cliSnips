@@ -1,0 +1,14 @@
+# CLI Snippet by Brett Verney (@wifiwizardofoz)
+# Version: v0.1 | 21-06-2022
+# Used for: Check AD to see if a username and password are valid
+
+
+## Parameters
+-u <username>				Specifies the username of the authenticating user. This is a mandatory parameter.
+-n <domain NetBIOS name>	Specifies the domain name. This field is optional.
+
+## Syntax
+ad auth -u <username> -n <NetBIOS domain name>
+
+# Example
+ad auth -u jdoe -n acme.internal

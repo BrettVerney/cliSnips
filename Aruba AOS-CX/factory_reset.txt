@@ -1,0 +1,12 @@
+# CLI Snippet by Brett Verney (@wifiwizardofoz)
+# Version: v0.2 | 12-09-2022
+# Used for: Aruba AOS-CX Factory Reset
+# Tested: Aruba 6300M
+
+## Erase Switch
+
+erase all zeroize
+
+## Verification
+
+Once booted, the switch will now use the factory default admin credentials and prompt to change the admin password.

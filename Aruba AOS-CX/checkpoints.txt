@@ -1,0 +1,28 @@
+# CLI Snippet by Brett Verney (@wifiwizardofoz)
+# Version: v0.1 | 12-09-2022
+# Used for: Aruba AOS-CX Configuration Checkpoints
+# Tested: Aruba 6300M
+
+## Create a checkpoint
+
+copy running-config checkpoint <checkpoint_name>
+
+## Show checkpoints
+
+show checkpoint list
+show checkpoint <checkpoint_name>
+
+## Compare differences between checkpoints
+
+checkpoint diff <checkpoint_name1> <checkpoint_name2>
+
+## Rollback checkpoint
+
+checkpoint rollback <checkpoint_name>
+
+## Rename checkpoint
+ checkpoint rename <current_name> <new_name>
+
+## Erase checkpoint
+
+erase checkpoint <checkpoint_name>

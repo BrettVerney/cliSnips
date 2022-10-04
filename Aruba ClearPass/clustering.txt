@@ -1,0 +1,20 @@
+# CLI Snippet by Brett Verney (@wifiwizardofoz)
+# Version: v0.1 | 21-06-2022
+# Used for: Making a ClearPass appliance a Subscriber in a Cluster
+
+
+## Parameters
+-b					Instructs Policy Manager to skip making a backup of the publisher before you make it a subscriber.
+-i <ip-address>		Specify the publisher's IP address.
+-l					Restores the local log database after this operation. This parameter is optional.
+-V					Instructs Policy Manager to not verify the publisher certificate.
+
+
+## Syntax
+cluster make-subscriber -i <ip-address> [-l] [-b] [-V]
+
+# Example
+cluster make-subscriber –i 192.0.2.1 -l
+
+# Verification
+cluster list

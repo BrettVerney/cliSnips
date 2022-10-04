@@ -1,0 +1,90 @@
+# CLI Snippet by Brett Verney (@wifiwizardofoz)
+# Version: v0.1 | 12-09-2022
+# Used for: Basic Aruba AOS-CX VSX Multi-Chassis Configuration
+
+## Create LAG on each switch
+
+interface lag <vsx_lag_id>
+ no routing
+ lacp mode active
+ vlan trunk native <vlan_native>
+ no shutdown
+!
+
+## Configure physical interfaces and assign to LAG on each switch
+
+interface <physical_int_1> <physical_int_2>
+ lag <vsx_lag_id>
+ mtu 9298
+ no shutdown
+!
+
+## Create a Keepalive VRF, configure and assign interface as keepalive on each switch #1
+
+vrf VSX-KEEPALIVE
+!
+interface <interface_id>
+ descsription VSX-KEEPALIVE
+ vrf attach VSX-KEEPALIVE
+ ip address x.x.x.Y/31
+!
+
+## Create a Keepalive VRF, configure and assign interface as keepalive on each switch #2
+
+vrf VSX-KEEPALIVE
+!
+interface <interface_id>
+ description VSX-KEEPALIVE
+ vrf attach VSX-KEEPALIVE
+ ip address x.x.x.Z/31
+!
+
+## Create VRF configuration on switch #1
+
+vsx
+ system-mac 0A:01:00:00:01:00 
+ inter-switch-link lag <vsx_lag_id>
+ keepalive peer x.x.x.Z source 10.99.99.1 x.x.x.Y VSX-KEEPALIVE
+ role primary
+ vsx-sync mclag-interfaces neighbor ospf snmp ssh static-routes stp-global vrrp vsx-global
+!
+
+## Create VRF configuration on switch #2
+
+vsx
+ system-mac 0A:01:00:00:01:00 
+ inter-switch-link lag <vsx_lag_id>
+ keepalive peer x.x.x.Y source x.x.x.Z vrf VSX-KEEPALIVE
+ role secondary
+!
+
+## Multi-chassis LAG/LACP configuration on server/infrastructure ports. Configure on each switch
+
+interface lag <lag_id> multi-chassis
+ no routing
+ no shutdown 
+ lacp mode active
+ vlan trunk native <vlan_native>
+ vlan trunk allowed <allowed_vlan_list>
+exit
+!
+
+interface <physical_int>
+ lag <lag_id>
+ no shutdown
+ exit
+
+## Verification
+
+show interface lag <vsx_lag_id>
+show lacp interfaces
+show lacp interfaces multi-chassis
+ping <keepalive_peer> vrf VSX-KEEPALIVE
+show vsx status
+show running-config vsx
+show running-config begin 5 vsx
+show running-config vsx-sync
+show vsx brief
+show vsx status keepalive
+show vsx status config-sync
+show vsx configuration split-recovery
