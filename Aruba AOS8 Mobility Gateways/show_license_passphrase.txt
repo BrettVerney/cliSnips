@@ -1,0 +1,5 @@
+# CLI Snippet by Brett Verney (@wifiwizardofoz)
+# Version: v0.1 | 20-04-2023
+# Used for: Find license passhprase to activate licenses against Mobility Conductors/Gateways.
+
+show license passhprase
