@@ -4,6 +4,7 @@ A handy collection of config snippets for CLI based appliances.
 ## Snippets Available
 ```
 .
+.
 ├── Aruba ALE
 │   └── interface_configure.txt
 ├── Aruba AOS-CX
@@ -13,6 +14,9 @@ A handy collection of config snippets for CLI based appliances.
 │   ├── tacacs_mgmt.txt
 │   ├── vsf_stacking.txt
 │   └── vsx.txt
+├── Aruba AOS8 - Mobility Gateways
+│   ├── move_aps_between_controllers.txt
+│   └── show_license_passphrase.txt
 ├── Aruba ClearPass
 │   ├── ad_auth_test.txt
 │   ├── clustering.txt
@@ -32,4 +36,5 @@ A handy collection of config snippets for CLI based appliances.
 │   └── shutdown_appliance.txt
 └── Windows PowerShell
     └── file_checksum_verification.txt
+
 ```
