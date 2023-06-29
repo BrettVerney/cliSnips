@@ -1,0 +1,16 @@
+# CLI Snippet by Brett Verney (@wifiwizardofoz)
+# Version: v1.0| 29-06-2023
+# Used for: Exempts IP addresses from being denied when "deny-inter-user-bridging" is enabled. Layer 3 devices running FSRP protocols (HSRP, VRRP etc) require their real addresses to be whitelisted so that they can ARP for clients.
+
+## Syntax
+
+allowed-address-table ipv4 <ip_address>
+
+## Example
+
+allowed-address-table ipv4 10.12.100.14
+allowed-address-table ipv4 10.12.100.15
+
+## Verification
+
+show allowed-address-list
