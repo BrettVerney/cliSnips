@@ -10,11 +10,13 @@ A handy collection of config snippets for CLI based appliances.
 ├── Aruba AOS-CX
 │   ├── checkpoints.txt
 │   ├── factory_reset.txt
+│   ├──	firmware_management.txt
 │   ├── spanning-tree_RPVST.txt
 │   ├── tacacs_mgmt.txt
 │   ├── vsf_stacking.txt
 │   └── vsx.txt
 ├── Aruba AOS8 - Mobility Gateways
+│   ├── allowed_address_list.txt
 │   ├── move_aps_between_controllers.txt
 │   └── show_license_passphrase.txt
 ├── Aruba ClearPass

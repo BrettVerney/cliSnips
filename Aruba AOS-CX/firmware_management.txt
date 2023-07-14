@@ -1,0 +1,23 @@
+# CLI Snippet by Brett Verney (@wifiwizardofoz)
+# Version: v0.1 | 11-7-2023
+# Used for: Aruba AOS-CX Firmware Management
+# Tested: Aruba 6300M + 6405
+
+## Verify SHA 256 Hash from Aruba Website (Using PowerShell)
+
+Get-FileHash  C:\Temp\<image_name>.swi -Algorithm SHA256
+
+## Copy image from USB Drive
+
+usb mount
+copy usb:/<image_name>.swi primary
+
+## Set image as primary and reload switch
+
+boot system primary
+
+## Verification
+
+show version
+show system
+
