@@ -1,0 +1,11 @@
+# CLI Snippet by Brett Verney (@wifiwizardofoz)
+# Version: v0.1 | 20-02-2024
+# Used for: Clean crash files from the Mobility Conductor after the GUI shows that crash files are available.
+
+## Syntax
+tar clean crash
+
+## Note
+If the Mobility Conductor prompt shows an asterisk (*) next to the hostname you must run the 'tar crash' command first.
+(CONDUCTOR01) *[mynode] #tar crash
+(CONDUCTOR01) [mynode] #tar clean crash
