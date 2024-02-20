@@ -17,6 +17,7 @@ A handy collection of config snippets for CLI based appliances.
 │   └── vsx.txt
 ├── Aruba AOS8 - Mobility Gateways
 │   ├── allowed_address_list.txt
+│   ├── clean_crash_files.txt
 │   ├── move_aps_between_controllers.txt
 │   └── show_license_passphrase.txt
 ├── Aruba ClearPass
