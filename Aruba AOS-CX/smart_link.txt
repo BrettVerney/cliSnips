@@ -1,0 +1,15 @@
+# CLI Snippet by Brett Verney (@wifiwizardofoz)
+# Version: v0.1 | 23-02-2024
+# Used for: Smart Link - Layer 2 loop prevention protocol (STP alternative)
+
+## Active-Passive Link Failover
+
+smartlink group 1
+    description Active-Passive-Uplink-Failover
+    primary-port {primary_port_id}
+    secondary-port {secondary_port_id}
+    control-vlan {mgmt_vlan}
+    protected-vlans {vlan_list}
+    preemption
+    preemption-delay 30
+    !
