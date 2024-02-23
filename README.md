@@ -11,6 +11,7 @@ A handy collection of config snippets for CLI based appliances.
 │   ├── checkpoints.txt
 │   ├── factory_reset.txt
 │   ├──	firmware_management.txt
+│   ├── smart_link.txt
 │   ├── spanning-tree_RPVST.txt
 │   ├── tacacs_mgmt.txt
 │   ├── vsf_stacking.txt
