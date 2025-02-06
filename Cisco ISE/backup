@@ -1,0 +1,34 @@
+# CLI Snippet by Brett Verney (@wifiwizardofoz)
+# Version: v0.1 | 06-2-2025
+# Used for: Cisco ISE Config and Operational Backups
+# Tested: ISE version 2.7 Patch 4
+
+## Backup Operational an Config Data To Disk
+
+backup <name> repository disk ise-operational encryption-key plain <key>
+backup <name> repository disk ise-config encryption-key plain <key>
+
+### Example
+
+backup ISE-BACKUP repository disk ise-config encryption-key plain C1sc0123
+backup ISE-BACKUP repository disk ise-config encryption-key plain C1sc0123
+
+
+## Copy image to SFTP Server
+
+copy disk:/<name>.tar.gpg sftp:/<ip_address>
+
+## Exmaple
+
+copy disk:/ISEBACKUP-OPS10-250206-1404.tar.gpg sftp:/10.10.10.10
+copy disk:/ISEBACKUP-CFG10-250206-1404.tar.gpg sftp:/10.10.10.10
+
+# Delete backup files from local disk
+
+del disk:/ISEBACKUP-OPS10-250206-1404.tar.gpg
+del disk:/ISEBACKUP-CFG10-250206-1404.tar.gpg
+
+# Verification Commands
+show backup status
+debug backup-restore all 7
+--no debug backup-restore all 7
